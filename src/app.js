@@ -164,10 +164,12 @@
 
 	// sort by color
 	function comparatorColors(a, b) {
-		if (a.dataset.colors < b.dataset.colors)
+		if (a.dataset.colors < b.dataset.colors) {
 			return -1;
-		if (a.dataset.colors > b.dataset.colors)
+		}
+		if (a.dataset.colors > b.dataset.colors) {
 			return 1;
+		}
 		return 0;
 	}
 
@@ -261,14 +263,12 @@
 						selectItem(itemUno);
 						audio = createAudio('src/audio/select.mp3');
 						audio.autoplay(true);
-						// img = 'src/img_2/pulsanti-01';
 					}
 				}
 				// sent the message "preview"
 				else if (label == "Preview" && confidence > 0.9) {
 					if (!setPreview) {
 						init = false;
-						if (active)
 							active.classList.remove('active');
 							audio = createAudio('src/audio/sort.mp3');
 							audio.autoplay(true);
@@ -278,14 +278,12 @@
 				// sent the message "next"
 				else if (label == "Next" && confidence > 0.9) {
 					if (!setNext) {
-						if (active) {
 							var next = active.nextElementSibling;
 							if (next) {
 								active.classList.remove('active');
 								next.classList.add('active');
 								audio = createAudio('src/audio/next.mp3');
 								audio.autoplay(true);
-							}
 						}
 					}
 					setNext = true;
@@ -293,17 +291,15 @@
 				// sent the message "previous"
 				else if (label == "Previous" && confidence > 0.9) {
 					if (!setPrevious) {
-						if (active) {
 							var prev = active.previousElementSibling;
 							if (prev) {
 								active.classList.remove('active');
 								prev.classList.add('active');
 								audio = createAudio('src/audio/next.mp3');
 								audio.autoplay(true);
-							}
 						}
-						setPrevious = true;
 					}
+					setPrevious = true;
 				}
 				// sent the message "search"
 				else if (label == "Search" && confidence > 0.9) {
